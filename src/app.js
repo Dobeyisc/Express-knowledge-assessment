@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/api", indexRoutes);
-app.use("/api/products", taskRoutes);
+app.use("/api/task", taskRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/auth", authRoutes);
 

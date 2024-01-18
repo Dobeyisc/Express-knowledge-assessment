@@ -8,18 +8,18 @@ import {
   deleteTaskById,
 } from "../controllers/task.controller.js";
 
-import { verifyToken, isModerator, isAdmin } from "../middlewares/authJwt.js";
+import { verifyToken, isAdmin, isTeacher } from "../middlewares/authJwt.js";
 
 const router = Router();
 
   router.get("/", getTask);
 
-  router.get("/:productId", getTaskById);
+  router.get("/:taskId", getTaskById);
 
-  router.post("/", [verifyToken, isModerator], createTask);
+  router.post("/", [verifyToken, isTeacher], createTask);
 
-  router.put("/:productId", [verifyToken, isModerator], updateTaskById);
+  router.put("/:taskId", [verifyToken, isTeacher], updateTaskById);
 
-  router.delete("/:productId", [verifyToken, isAdmin], deleteTaskById);
+  router.delete("/:taskId", [verifyToken, isAdmin], deleteTaskById);
 
 export default router;
