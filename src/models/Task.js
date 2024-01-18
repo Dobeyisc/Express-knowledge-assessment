@@ -1,11 +1,21 @@
 import {Schema, model} from "mongoose";
 
-const taskSchema = new Schema({
-  title: String,
-  description: String,
-  completed: Boolean
+const taskSchema = new Schema(
+  {
+    name: {
+      type: String,
+      require: true,
+    }, 
+    completed: {
+      type: Boolean,
+      require: true,
+    }, 
+    description: {
+      type: String,
+      require: true
+    }
 }, {
-  timestamps: true,
-  versionKey: true
+    versionKey: false,
+    timestamps: true
 })
  export default model("Tasksgestion", taskSchema);

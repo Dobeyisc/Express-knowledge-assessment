@@ -1,4 +1,4 @@
-import { Mongoose, Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs"
 
 const userSchema = new Schema({
@@ -13,9 +13,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         unique: true
-    }, roles: [{
+    }, 
+    roles: [{
         ref: "role",
-        type: Mongoose.Types.ObjectId
+        type: Schema.Types.ObjectId
     }, ]
 }, {
     timestamps: true,
@@ -23,16 +24,16 @@ const userSchema = new Schema({
     }
 );
 
-productSchema.statics.encryptPassword = async (password) => {
+  userSchema.statics.encryptPassword = async (password) => {
     const salt = await bcrypt.genSalt(10);
     return await bcrypt.hash(password, salt);
   };
   
-  productSchema.statics.comparePassword = async (password, receivedPassword) => {
+  userSchema.statics.comparePassword = async (password, receivedPassword) => {
     return await bcrypt.compare(password, receivedPassword)
   }
   
-  productSchema.pre("save", async function (next) {
+  userSchema.pre("save", async function (next) {
     const user = this;
     if (!user.isModified("password")) {
       return next();
