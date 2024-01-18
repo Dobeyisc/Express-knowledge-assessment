@@ -36,7 +36,7 @@ Algunas tecnologías usadas en el proyecto:
 
 Para consumir la API correctamente se debe tener en cuenta la siguiente estructura...
 
-#### *endpoint/Doctores*
+#### *endpoint/Api/task*
 ```http
   GET      /api/task
   GET      /api/task/{id}
@@ -47,93 +47,14 @@ Para consumir la API correctamente se debe tener en cuenta la siguiente estructu
 ##### **body**
 ```json
     {
-        "":"666",
-        "":"Juanito",
-        "":"Alimaña"
+        "name":"Stephen Hoking",
+        "completed":true,
+        "description":"Lorem Ipsum has been the industry's standard dummy "
     }   
 
 ```
 
 -----
 
-#### *endpoint/Pacientes*
-```http
-  GET      /api/pacientes
-  GET      /api/pacientes/{id}
-  POST     /api/pacientes/{body}
-  PUT      /api/pacientes/{id}
-  DELETE   /api/pacientes/{id}
-```
-##### **body**
-```json
-    {
-        "id_numeroCedula":"777",
-        "nombre":"Angel",
-        "apellido":"Casallas",
-        "fechaNacimiento":"2000-08-28",
-        "id_telefono":"315678"
-    } 
-#### *Consultorio*
-```http
-  GET      /api/consultorio
-  GET      /api/consultorio/{id}
-  POST     /api/consultorio/{body}
-  PUT      /api/consultorio/{id}
-  DELETE   /api/consultorio/{id}
-```
-##### **body**
-```json
-    {
-        "id_consultorio":"101",
-        "direccionConsultorio":"Transversal 78H bis#41c-48 - Compensar"
-    }
-```
------
-
-#### *endpoint/Especialización*
-```http
-  GET      /api/especialidad   
-  GET      /api/especialidad/{id}
-  POST     /api/especialidad/{body}
-  PUT      /api/especialidad/{id}
-  DELETE   /api/especialidad/{id}
-```
-##### **body**
-```json
-    {
-        "especialidad":"Neurologia",
-        "descripcion":"Medicina especializada"
-    }
-```
-
------
-#### *endpoint/Cita*
-```http
-  GET      /api/cita   
-  GET      /api/cita/{data}
-  POST     /api/cita/{id}
-  PUT      /api/cita/{id}
-  DELETE   /api/cita/{id}
-```
-##### **body**
-```json
-    {
-        "fecha_hora":"2023-12-07T12:00:00",
-        "id_profesional":"56254652",
-        "id_numeroCedula":"98723421",
-        "id_especializacion":"1",
-        "id_consultorio":"101"
-    } 
-```
 
 
-### Ejemplo para el uso de parametros
-#### Get item {id} 
-
-```http
-  GET /api/consultorio/${id}
-```
-
-| Parámetro | Tipo     | Descripción                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `int` | **Required**. Id del recurso |
